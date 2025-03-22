@@ -16,18 +16,18 @@ class DataManager:
 
     @classmethod
     def get_sheety_data(cls, params=None):
-        """Retrieves data from entire prices sheet from excel like table"""
+        """Retrieves data from entire prices sheet from Excel like table"""
         data = cls.perform_http_request(url=cls.SHEETY_URL_ENDPOINT,method="GET", params=params, headers=None)
         return data["prices"]
 
     @classmethod
-    def get_usernames_and_emails(cls, params=None):
-        """Retrieves user info from excel like table in a tuple form (name, email)"""
+    def get_user_credentials(cls, params=None):
+        """Retrieves user info from Excel like table in a tuple form (name, email)"""
         users = cls.perform_http_request(url=cls.SHEETY_USERS_ENDPOINT, method="GET", params=params, headers=None)
         if not users or "users" not in users or not users["users"]:
             print("There is no users data in data base!")
             return
-        return [(user["name"],user["email"]) for user in users["users"]]
+        return [(user["name"],user["email"], user["my_city"]) for user in users["users"]]
 
     @classmethod
     def update_sheety_table(cls, updated_data:dict, object_id : int): #IMPORTANT Get sheety token headers work!
