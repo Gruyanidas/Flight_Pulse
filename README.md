@@ -88,9 +88,8 @@ flight-deal-notificator/ ├── main.py # Main execution logic ├── data
 
 1. **Clone the repo**  
 
-   git clone https://github.com/yourusername/flightpulse.git
-   cd flightpulse
-
+   git clone https://github.com/Gruyanidas/Flight_Pulse.git
+   
 2. **Install dependencies**
 
     pip install -r requirements.txt
