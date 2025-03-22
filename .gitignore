@@ -1,0 +1,30 @@
+# ▶️ Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 🧪 Virtual environments (if using one)
+venv/
+.env/
+
+# 🛑 Secret environment variables
+.env
+
+# 💻 IDE & editor folders
+.vscode/
+.idea/
+
+# 🍏 macOS system file
+.DS_Store
+
+# 📝 Logs and local debug files
+*.log
+flight_data.txt
+
+# 🎞️ Optional: demo assets
+assets/*.psd
+assets/*.xcf
+test.py
+project_data_base.py
+sheety_data.py
