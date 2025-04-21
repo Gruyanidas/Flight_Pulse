@@ -1,7 +1,8 @@
-import os, time
+import os, time, dotenv
 import requests
 from datetime import datetime as dt, timedelta
 from data_manager import DataManager as dm
+dotenv.load_dotenv()
 
 class FlightSearch:
     #Initiation class variables
@@ -131,7 +132,7 @@ class FlightSearch:
             }
         }
 
-        data_returned = dm.perform_http_request(url=cls.FLIGHT_ENDPOINT, data=data, headers=headers, method="POST")
+        data_returned = dm.perform_http_request(url=cls.FLIGHT_ENDPOINT, json=data, data=None, headers=headers, method="POST")
         flight_data = data_returned.json()
 
         #Optional - write JSON to txt just for better handling of huge file by using static method

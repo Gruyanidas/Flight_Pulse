@@ -1,5 +1,4 @@
 import time
-
 import dotenv
 from data_manager import DataManager
 from flight_search import FlightSearch
@@ -14,12 +13,11 @@ def main():
 	flight_search = FlightSearch()
 	sheet_data = data_manager.get_sheety_data(params=None)
 	users_info = data_manager.get_user_credentials(params=None)
-
 	#Looping through all the desired destination from Excel like file, getting codes for those cities,
 	# and getting data from the FLIGHT_ENDPOINT (Amadeus API) for given params. As final, getting the cheapest flight
 	#object from FlightData class
 	for name, email, current_destination in users_info:
-		for city in sheet_data["prices"]:
+		for city in sheet_data:
 			city_param = city['city']
 
 			#Calling the get_iata_code API only once to make sure codes are updated in Excel
@@ -42,7 +40,7 @@ def main():
 			arrival_date = cheapest_flight.arrival_date
 
 			#If price passes the condition, then user get informed via email for great deal
-			notificator = NotificationManager(sheet_data, cheapest_flight)
+			notificator = NotificationManager(city, cheapest_flight)
 			if notificator.is_it_worth_it():
 				notificator.inform_user(destination=city_param, username=name, email=email)
 

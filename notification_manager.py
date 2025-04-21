@@ -10,7 +10,7 @@ class NotificationManager:
     """Responsible for comparing prices and sending notification mail to a user"""
 
     def __init__(self, sheet_data:dict, cheapest_flight:FlightData):
-        self.sheet_data = sheet_data
+        self.sheet_data = sheet_data["lowestPrice"]
         self.cheapest_flight = cheapest_flight
         self.smtp_address = os.getenv("MY_SMTP_ADRESS")
         self.my_email = os.getenv("GOOGLE_EMAIL")
@@ -22,8 +22,8 @@ class NotificationManager:
         if isinstance(self.cheapest_flight, str): #IMPORTANT in case that find_cheapest_flight returns string "NO_DATA"
             print("No valid flight data to compare.")
             return False
-        if self.sheet_data["lowest_price"] >= self.cheapest_flight.price:
-            print(f"Wow! You got lucky! Current price is almost like a {self.sheet_data['lowest_price']}!")
+        if self.sheet_data >= self.cheapest_flight.price:
+            print(f"Wow! You got lucky! Current price is almost like a {self.sheet_data}!")
             return True
         else:
             return False

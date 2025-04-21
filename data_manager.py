@@ -27,29 +27,29 @@ class DataManager:
         if not users or "users" not in users or not users["users"]:
             print("There is no users data in data base!")
             return
-        return [(user["name"],user["email"], user["my_city"]) for user in users["users"]]
+        return [(user["whatIsYourFirstName?"],user["whatIsYourEMailAddress?"], user["whatsYourCurrentCityAirportDestination?"]) for user in users["users"]]
 
     @classmethod
     def update_sheety_table(cls, updated_data:dict, object_id : int): #IMPORTANT Get sheety token headers work!
         """Updates data in sheety table"""
-        response = cls.perform_http_request(url=f"{cls.SHEETY_URL_ENDPOINT}/{object_id}", method="PUT", data=updated_data)
+        response = cls.perform_http_request(url=f"{cls.SHEETY_URL_ENDPOINT}/{object_id}", method="PUT", json=updated_data)
         if response.status_code == 200 or response.status_code == 204:
             print("Update was successful!")
         print(response.status_code, response.text)
 
     @staticmethod
-    def perform_http_request(url: str, method: str = "GET", params=None, data=None, headers=None):
+    def perform_http_request(url: str, method=None, params=None, json=None, data=None, headers=None):
         """Generic method to handle GET, POST, PUT"""
         try:
             method = method.upper()
             if method == "GET":
-                response = requests.get(url=url, params=params, headers=headers, timeout=10)
+                response = requests.get(url=url, params=params, headers=headers, timeout=30)
             elif method == "POST":
-                response = requests.post(url=url, json=data, headers=headers, timeout=10)
+                response = requests.post(url=url, json=json, data=data, headers=headers, timeout=30)
             elif method == "PUT":
-                response = requests.put(url=url, json=data, headers=headers, timeout=10)
+                response = requests.put(url=url, json=json, headers=headers, timeout=30)
             elif method == "DELETE":
-                response = requests.delete(url=url, headers=headers, timeout=10)
+                response = requests.delete(url=url, headers=headers, timeout=30)
             else:
                 raise ValueError(f"Unsupported HTTP method: {method}")
 
