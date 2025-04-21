@@ -58,5 +58,7 @@ def main():
 			time.sleep(1)
 			data_manager.update_sheety_table(updated_data=updated_sheety_data, object_id=city["id"])
 
+			#https://docs.google.com/forms/d/e/1FAIpQLSc1mn5j9ete6GGY2Y19fEljJvLJxUF0MwEyma1AKPJLM-PaRg/viewform LINK TO GOOGLE FORM
+
 if __name__ == "__main__":
 	main()

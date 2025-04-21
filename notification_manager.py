@@ -23,7 +23,7 @@ class NotificationManager:
             print("No valid flight data to compare.")
             return False
         if self.sheet_data >= self.cheapest_flight.price:
-            print(f"Wow! You got lucky! Current price is almost like a {self.sheet_data}!")
+            print(f"Wow! You got lucky! Current price is lower than {self.sheet_data}!")
             return True
         else:
             return False

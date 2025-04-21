@@ -72,9 +72,25 @@ This project is built to be modular and highly extendable. Here’s what can be 
 
 ---
 
-## 🖼️ Demo
+## 🎬 Application Demo
 
-GIF demo coming soon...
+### 1. 📝 Filling the Form with Data  
+![Filling the Form](media/filling_the_form.gif)
+
+---
+
+### 2. 📢 Program Startup & Output  
+![Program Output](media/program_output.gif)
+
+---
+
+### 3. 📊 Auto-Filling the Spreadsheet  
+![Excel Filling](media/excel_filling.gif)
+
+---
+
+### 4. 📧 Emailing Users about Hot Deals  
+![Email Sending](media/email.gif)
 
 ---
 
